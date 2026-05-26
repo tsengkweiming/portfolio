@@ -24,6 +24,13 @@ const CONFIG = {
           link: 'https://www.teamlab.art/jp/ew/flowermountain_macao/macao/',
         },
         {
+          title: 'Universe of Water Particles on a Rock where People Gather',
+          description: 'Feb 2026, Tokyo, Japan',
+          imageUrl:
+            'https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/Yt5eET5oZzm6FBicauQUSY/width=3840,quality=80',
+          link: 'https://www.teamlab.art/ew/waterparticles-rock-azabudai/tokyo/',
+        },
+        {
           title: 'クリニックサイト',
           description: 'Dec 2025, Kaohsiung, Taiwan',
           imageUrl:
