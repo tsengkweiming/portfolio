@@ -29,8 +29,6 @@ type SectionHeaderProps = {
   body?: string;
 };
 
-const FEATURED_PROJECT_LIMIT = 9;
-
 const SectionHeader = ({ eyebrow, title, body }: SectionHeaderProps) => (
   <div className="mb-8 max-w-3xl">
     <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
@@ -237,8 +235,6 @@ const FocusCard = ({
 
 const CvPortfolio = ({ config }: CvPortfolioProps) => {
   const data = buildCvData(config);
-  const featuredProjects = data.projects.slice(0, FEATURED_PROJECT_LIMIT);
-  const additionalProjects = data.projects.slice(FEATURED_PROJECT_LIMIT);
   const githubLink = data.contactLinks.find((link) => link.label === 'GitHub');
 
   return (
@@ -388,42 +384,13 @@ const CvPortfolio = ({ config }: CvPortfolioProps) => {
             title="Realtime work at architectural scale."
           />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {featuredProjects.map((project) => (
+            {data.projects.map((project) => (
               <ProjectCard
                 key={`${project.title}-${project.period}-${project.location || ''}`}
                 project={project}
               />
             ))}
           </div>
-          {additionalProjects.length > 0 && (
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {additionalProjects.map((project) => (
-                <a
-                  className="group flex items-center justify-between gap-5 rounded-lg border border-white/10 bg-white/[0.03] p-5 transition hover:border-cyan-300/40 hover:bg-white/[0.055] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-                  href={project.link}
-                  key={`${project.title}-${project.period}-${project.location || ''}`}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
-                      {project.period}
-                    </p>
-                    <h3 className="mt-2 text-lg font-semibold text-white">
-                      {project.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-zinc-400">
-                      {project.location || project.description}
-                    </p>
-                  </div>
-                  <MdOpenInNew
-                    aria-hidden="true"
-                    className="shrink-0 text-zinc-500 transition group-hover:text-cyan-300"
-                  />
-                </a>
-              ))}
-            </div>
-          )}
         </div>
       </section>
 
