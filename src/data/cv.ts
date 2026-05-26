@@ -61,7 +61,7 @@ type ProjectProfile = {
   location?: string;
 };
 
-const DEFAULT_NAME = 'Tseng KweiMing';
+const DEFAULT_NAME = 'Tseng KueiMing';
 const ROLE = 'Graphics Engineer / Creative Technologist';
 const LOCATION = 'Tokyo, Japan';
 

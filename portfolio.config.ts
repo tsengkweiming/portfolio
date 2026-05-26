@@ -6,9 +6,9 @@ const CONFIG = {
     username: 'tsengkweiming', // Your GitHub org/user name. (This is the only required config)
   },
   /**
-   * If you are deploying to https://<USERNAME>.github.io/, for example your repository is at https://github.com/arifszn/arifszn.github.io, set base to '/'.
+   * If you are deploying to https://<USERNAME>.github.io/, for example your repository is at https://github.com/tsengkweiming/tsengkweiming.github.io, set base to '/'.
    * If you are deploying to https://<USERNAME>.github.io/<REPO_NAME>/,
-   * for example your repository is at https://github.com/arifszn/portfolio, then set base to '/portfolio/'.
+   * for example your repository is at https://github.com/tsengkweiming/portfolio, then set base to '/portfolio/'.
    */
   base: '/portfolio/',
   projects: {
@@ -100,17 +100,17 @@ const CONFIG = {
         limit: 8, // How many projects to display.
         exclude: {
           forks: true, // Forked projects will not be displayed if set to true.
-          projects: [], // These projects will not be displayed. example: ['arifszn/my-project1', 'arifszn/my-project2']
+          projects: [], // These projects will not be displayed. example: ['tsengkweiming/my-project1', 'tsengkweiming/my-project2']
         },
       },
       manual: {
         // Properties for manually specifying projects
-        projects: [], // List of repository names to display. example: ['arifszn/my-project1', 'arifszn/my-project2']
+        projects: [], // List of repository names to display. example: ['tsengkweiming/my-project1', 'tsengkweiming/my-project2']
       },
     },
   },
   seo: {
-    title: 'Tseng KweiMing | Graphics Engineer CV',
+    title: 'Tseng KueiMing | Graphics Engineer CV',
     description:
       'Graphics engineer CV covering real-time rendering, shader development, immersive installations, and selected teamLab work.',
     imageURL:
@@ -262,10 +262,10 @@ const CONFIG = {
 
   // Optional Footer. Supports plain text or HTML.
   footer: `Made with <a 
-      class="text-primary" href="https://github.com/arifszn/gitprofile"
+      class="text-primary" href="https://github.com/tsengkweiming/portfolio"
       target="_blank"
       rel="noreferrer"
-    >GitProfile</a>`,
+    >portfolio</a>`,
 
   enablePWA: true,
 };
