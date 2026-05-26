@@ -17,6 +17,20 @@ const CONFIG = {
       // To hide the `External Projects` section, keep it empty.
       projects: [
         {
+          title: 'Valley of Flowers and People: Lost, Immersed and Reborn',
+          description: 'Mar 2026, Macao',
+          imageUrl:
+            'https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/oMSDf7238Z9jGNqgqrrR4D/width=3840,quality=80',
+          link: 'https://www.teamlab.art/jp/ew/flowermountain_macao/macao/',
+        },
+        {
+          title: 'クリニックサイト',
+          description: 'Dec 2025, Kaohsiung, Taiwan',
+          imageUrl:
+            'https://tsengkweiming.github.io/portfolio-pages/project-clinic/photos/img1.png',
+          link: 'https://dongshengclinic.com/',
+        },
+        {
           title: 'HoiPoiのVJ制作',
           description: 'May 2025, Tokyo, Japan',
           imageUrl:

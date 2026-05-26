@@ -29,6 +29,8 @@ type SectionHeaderProps = {
   body?: string;
 };
 
+const FEATURED_PROJECT_LIMIT = 9;
+
 const SectionHeader = ({ eyebrow, title, body }: SectionHeaderProps) => (
   <div className="mb-8 max-w-3xl">
     <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
@@ -235,8 +237,8 @@ const FocusCard = ({
 
 const CvPortfolio = ({ config }: CvPortfolioProps) => {
   const data = buildCvData(config);
-  const featuredProjects = data.projects.slice(0, 6);
-  const additionalProjects = data.projects.slice(6);
+  const featuredProjects = data.projects.slice(0, FEATURED_PROJECT_LIMIT);
+  const additionalProjects = data.projects.slice(FEATURED_PROJECT_LIMIT);
   const githubLink = data.contactLinks.find((link) => link.label === 'GitHub');
 
   return (

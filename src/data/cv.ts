@@ -61,6 +61,8 @@ type ProjectProfile = {
   location?: string;
 };
 
+type ExternalProject = NonNullable<ExternalProjects['projects']>[number];
+
 const DEFAULT_NAME = 'Tseng KueiMing';
 const ROLE = 'Graphics Engineer / Creative Technologist';
 const LOCATION = 'Tokyo, Japan';
@@ -78,6 +80,34 @@ const EXPERIENCE_BULLETS: Record<string, string[]> = {
 };
 
 const PROJECT_PROFILES: ProjectProfile[] = [
+  {
+    match: 'project-clinic',
+    title: 'Dong Sheng Clinic Website',
+    description:
+      'Production clinic website for a Kaohsiung psychiatry and psychosomatic medicine practice, combining service information, physician profiles, health articles, contact details, and appointment entry points.',
+    challenge:
+      'Balancing a calm medical brand experience with practical patient workflows, responsive layout, readable bilingual content, and lightweight interactive visuals.',
+    technologies: [
+      'Frontend Development',
+      'Responsive UI',
+      'WebGL',
+      'Appointment workflow',
+      'Content architecture',
+    ],
+    period: 'Dec 2025',
+    location: 'Kaohsiung, Taiwan',
+  },
+  {
+    match: 'flowersandpeople-macao',
+    title: 'Valley of Flowers and People: Lost, Immersed and Reborn',
+    description:
+      'Immersive teamLab installation centered on generative flower motion and spatial continuity.',
+    challenge:
+      'Supporting seamless visual behavior across large physical surfaces and multi-machine rendering contexts.',
+    technologies: ['Distributed rendering', 'Spatial computing', 'Shaders'],
+    period: 'Mar 2026',
+    location: 'Macao',
+  },
   {
     match: 'project-hoipoi-vj',
     title: 'HoiPoi VJ Production',
@@ -132,27 +162,6 @@ const PROJECT_PROFILES: ProjectProfile[] = [
     location: 'Jeddah, Saudi Arabia',
   },
   {
-    match: 'life-ephemerallight-jeddah',
-    title: 'Life is an Ephemeral Light that Blooms in the Dark',
-    description: 'Immersive light-based teamLab work presented in Jeddah.',
-    challenge:
-      'Coordinating luminous, time-sensitive visual behavior with stable multi-display execution.',
-    technologies: ['Realtime visuals', 'Synchronization', 'Rendering'],
-    period: 'May 2024',
-    location: 'Jeddah, Saudi Arabia',
-  },
-  {
-    match: 'life-ephemerallight-azabudai',
-    title: 'Life is an Ephemeral Light that Blooms in the Dark',
-    description:
-      'Tokyo presentation of an immersive light and motion installation.',
-    challenge:
-      'Adapting a sensitive visual system to site-specific geometry and viewing conditions.',
-    technologies: ['Realtime visuals', 'Spatial adaptation', 'Shaders'],
-    period: 'Feb 2024',
-    location: 'Azabudai, Tokyo, Japan',
-  },
-  {
     match: 'reconnect',
     title: 'Rinkan Sauna',
     description:
@@ -176,6 +185,27 @@ const PROJECT_PROFILES: ProjectProfile[] = [
       'Connecting audience-generated visual content with a web-delivered, accessible presentation flow.',
     technologies: ['Web experience', 'Realtime media', 'Participatory systems'],
     period: 'Aug 2020',
+  },
+  {
+    match: 'life-ephemerallight-jeddah',
+    title: 'Life is an Ephemeral Light that Blooms in the Dark',
+    description: 'Immersive light-based teamLab work presented in Jeddah.',
+    challenge:
+      'Coordinating luminous, time-sensitive visual behavior with stable multi-display execution.',
+    technologies: ['Realtime visuals', 'Synchronization', 'Rendering'],
+    period: 'May 2024',
+    location: 'Jeddah, Saudi Arabia',
+  },
+  {
+    match: 'life-ephemerallight-azabudai',
+    title: 'Life is an Ephemeral Light that Blooms in the Dark',
+    description:
+      'Tokyo presentation of an immersive light and motion installation.',
+    challenge:
+      'Adapting a sensitive visual system to site-specific geometry and viewing conditions.',
+    technologies: ['Realtime visuals', 'Spatial adaptation', 'Shaders'],
+    period: 'Feb 2024',
+    location: 'Azabudai, Tokyo, Japan',
   },
   {
     match: 'soft_terrain_forest',
@@ -240,8 +270,21 @@ const getDisplayName = (config: Config): string => {
   return DEFAULT_NAME;
 };
 
-const getProjectProfile = (link: string): ProjectProfile | undefined => {
-  return PROJECT_PROFILES.find((profile) => link.includes(profile.match));
+const getProjectProfile = (
+  project: ExternalProject,
+): ProjectProfile | undefined => {
+  const searchableProjectText = [
+    project.link,
+    project.imageUrl,
+    project.title,
+    project.description,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return PROJECT_PROFILES.find((profile) =>
+    searchableProjectText.includes(profile.match),
+  );
 };
 
 const parsePeriodLocation = (
@@ -301,7 +344,7 @@ const makeProjects = (config: Config): CvProject[] => {
   const externalProjects = config.projects?.external?.projects || [];
 
   return externalProjects.map((project) => {
-    const profile = getProjectProfile(project.link);
+    const profile = getProjectProfile(project);
     const parsed = parsePeriodLocation(project.description);
 
     return {
