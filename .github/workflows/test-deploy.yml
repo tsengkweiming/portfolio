@@ -3,6 +3,17 @@ name: Test Deployment
 on:
   pull_request:
     branches: [main]
+    paths:
+      - '.github/workflows/test-deploy.yml'
+      - 'index.html'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'portfolio.config.ts'
+      - 'postcss.config.js'
+      - 'public/**'
+      - 'src/**'
+      - 'tsconfig*.json'
+      - 'vite.config.ts'
 
 jobs:
   test-deploy:

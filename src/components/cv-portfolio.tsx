@@ -17,6 +17,7 @@ import {
   type CvFocusArea,
   type CvLink,
   type CvProject,
+  type CvRepository,
 } from '../data/cv';
 
 type CvPortfolioProps = {
@@ -150,6 +151,12 @@ const ProjectCard = ({ project }: { project: CvProject }) => (
         />
       </div>
       <p className="text-sm leading-6 text-zinc-300">{project.description}</p>
+      {project.role && (
+        <p className="mt-4 text-sm leading-6 text-zinc-400">
+          <span className="font-semibold text-zinc-200">Role: </span>
+          {project.role}
+        </p>
+      )}
       <p className="mt-4 text-sm leading-6 text-zinc-400">
         <span className="font-semibold text-zinc-200">Challenge: </span>
         {project.challenge}
@@ -157,6 +164,36 @@ const ProjectCard = ({ project }: { project: CvProject }) => (
       <div className="mt-4">
         <ChipList items={project.technologies} />
       </div>
+    </div>
+  </a>
+);
+
+const GithubProjectCard = ({ project }: { project: CvRepository }) => (
+  <a
+    className="group flex h-full flex-col rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[0.055] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+    href={project.link}
+    rel="noreferrer"
+    target="_blank"
+  >
+    <div className="mb-5 flex items-start justify-between gap-4">
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
+          {project.repo}
+        </p>
+        <h3 className="mt-2 text-xl font-semibold text-white">
+          {project.title}
+        </h3>
+      </div>
+      <AiFillGithub
+        aria-hidden="true"
+        className="mt-1 shrink-0 text-2xl text-zinc-500 transition group-hover:text-cyan-300"
+      />
+    </div>
+    <p className="flex-1 text-sm leading-6 text-zinc-300">
+      {project.description}
+    </p>
+    <div className="mt-5">
+      <ChipList items={project.technologies} />
     </div>
   </a>
 );
@@ -262,6 +299,11 @@ const CvPortfolio = ({ config }: CvPortfolioProps) => {
             <a className="transition hover:text-white" href="#work">
               Work
             </a>
+            {data.githubProjects.length > 0 && (
+              <a className="transition hover:text-white" href="#github">
+                GitHub
+              </a>
+            )}
             <a className="transition hover:text-white" href="#experience">
               Experience
             </a>
@@ -346,7 +388,7 @@ const CvPortfolio = ({ config }: CvPortfolioProps) => {
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <SectionHeader
-              body="A CV-oriented view of the existing portfolio data, focused on graphics engineering depth, production work, and visual systems."
+              body="A focused overview of graphics engineering work, production roles, and visual systems."
               eyebrow="About"
               title="Engineering for immersive visual spaces."
             />
@@ -393,6 +435,26 @@ const CvPortfolio = ({ config }: CvPortfolioProps) => {
           </div>
         </div>
       </section>
+
+      {data.githubProjects.length > 0 && (
+        <section
+          className="relative border-b border-white/10 px-5 py-16 sm:px-8"
+          id="github"
+        >
+          <div className="mx-auto max-w-7xl">
+            <SectionHeader
+              body="Pinned public repositories and graphics programming experiments."
+              eyebrow="GitHub Projects"
+              title="Open-source rendering and image experiments."
+            />
+            <div className="grid gap-5 md:grid-cols-2">
+              {data.githubProjects.map((project) => (
+                <GithubProjectCard key={project.repo} project={project} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="relative border-b border-white/10 px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-7xl">

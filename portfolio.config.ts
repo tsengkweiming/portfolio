@@ -1,7 +1,7 @@
 // portfolio.config.ts
 
 const CONFIG = {
-  bio: `Graphics engineer and creative technologist specializing in real-time rendering, shader development (HLSL, GLSL), and system architecture in C#. Experienced in building distributed real-time synchronization systems, signal processing pipelines, and large-scale object management. At teamLab, I develop immersive digital contents that integrate graphics, distributed systems, and spatial computing—ensuring seamless visual continuity across multiple PCs and complex geometries such as walls and floors. With a background in architecture and transportation technology from National Chiao Tung University, I bring a human-centered approach to spatial system design. Previously a VR developer at NAXS Corp. Always curious, always building.`,
+  bio: `Graphics engineer specializing in real-time rendering, shader development (HLSL, GLSL), and system architecture in C#. Experienced in building distributed real-time synchronization systems, signal processing pipelines, and large-scale object management. At teamLab, I develop immersive digital contents that integrate graphics, distributed systems, and spatial computing—ensuring seamless visual continuity across multiple PCs and complex geometries such as walls and floors. I also have AR and HCI research experience through a multi-user AR/VR audiovisual performance thesis using ARKit. With a background in architecture and transportation technology from National Chiao Tung University, I bring a human-centered approach to spatial system design. Previously a VR developer at NAXS Corp. Always curious, always building.`,
   github: {
     username: 'tsengkweiming', // Your GitHub org/user name. (This is the only required config)
   },
@@ -38,6 +38,13 @@ const CONFIG = {
           link: 'https://dongshengclinic.com/',
         },
         {
+          title: 'Flowers and People, Cannot be Controlled but Live Together',
+          description: 'Oct 2025, Kyoto, Japan',
+          imageUrl:
+            'https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/d53fa366-71ef-4b3c-d72a-ec3025c24600/width=3840,quality=80',
+          link: 'https://www.teamlab.art/jp/ew/flowersandpeople-kyoto/kyoto/',
+        },
+        {
           title: 'HoiPoiのVJ制作',
           description: 'May 2025, Tokyo, Japan',
           imageUrl:
@@ -50,13 +57,6 @@ const CONFIG = {
           imageUrl:
             'https://tsengkweiming.github.io/portfolio-pages/project-pearl-vj/photos/img3.png',
           link: 'https://tsengkweiming.github.io/portfolio-pages/project-pearl-vj/',
-        },
-        {
-          title: 'Flowers and People, Cannot be Controlled but Live Together',
-          description: 'Oct 2025, Kyoto, Japan',
-          imageUrl:
-            'https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/d53fa366-71ef-4b3c-d72a-ec3025c24600/width=3840,quality=80',
-          link: 'https://www.teamlab.art/jp/ew/flowersandpeople-kyoto/kyoto/',
         },
         {
           title: 'Megaliths in the Roots Garden',
@@ -87,6 +87,21 @@ const CONFIG = {
           link: 'https://www.teamlab.art/jp/w/life-ephemerallight-azabudai/',
         },
         {
+          title:
+            'Spatial Calligraphy in the Forest - One Stroke, Secondary Forest',
+          description: 'May 2022, Osaka, Japan',
+          imageUrl:
+            'https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/SsTKBipnoBd7WnjfirpNJb/width=3840,quality=80',
+          link: 'https://www.teamlab.art/jp/ew/spatialcalligraphy-secondaryforest-botanical/',
+        },
+        {
+          title: 'LUXE',
+          description: 'May 2021, Yokohama, Kanagawa, Japan',
+          imageUrl:
+            'https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/cVrt7rL7pMM7SYgXroAfiV/width=3840',
+          link: 'https://www.team-lab.com/luxe/',
+        },
+        {
           title: 'Rinkan sauna',
           description:
             'サウナ空間で制作したリアルタイム映像作品。漂うミストにを投影し、没入的な雰囲気を生み出す。 Mar 2021, Roppongi Tokyo, Japan',
@@ -110,12 +125,25 @@ const CONFIG = {
             'https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/YRS4F2bcFFP5fiXfmjw6SB/width=3840,quality=80',
           link: 'https://www.teamlab.art/jp/ew/soft_terrain_forest/',
         },
+        {
+          title: 'Render Ghost',
+          description: '2017 - 2018, Taiwan',
+          imageUrl:
+            'https://framerusercontent.com/images/2O7PThEfpIawIjjhVfbeliyZwOU.jpg?scale-down-to=4096&width=4240&height=2384',
+          link: 'https://www.naxs.tech/projects/render-ghost',
+        },
+        {
+          title: 'Interactive AR/VR Audio-Visual Performance for Multi-User',
+          description: 'Oct 2018, Hsinchu, Taiwan',
+          imageUrl: './projects/ar-vr-thesis.jpg',
+          link: './docs/ar-vr-thesis.pdf',
+        },
       ],
     },
     github: {
       display: true, // Display GitHub projects?
       header: 'Github Projects',
-      mode: 'automatic', // Mode can be: 'automatic' or 'manual'
+      mode: 'manual', // Mode can be: 'automatic' or 'manual'
       automatic: {
         sortBy: 'stars', // Sort projects by 'stars' or 'updated'
         limit: 8, // How many projects to display.
@@ -126,14 +154,18 @@ const CONFIG = {
       },
       manual: {
         // Properties for manually specifying projects
-        projects: [], // List of repository names to display. example: ['tsengkweiming/my-project1', 'tsengkweiming/my-project2']
+        projects: [
+          'tsengkweiming/unity-oit',
+          'tsengkweiming/TextureSynthesis',
+          'tsengkweiming/DongShengClinic',
+        ], // List of repository names to display. example: ['tsengkweiming/my-project1', 'tsengkweiming/my-project2']
       },
     },
   },
   seo: {
     title: 'Tseng KueiMing | Graphics Engineer CV',
     description:
-      'Graphics engineer CV covering real-time rendering, shader development, immersive installations, and selected teamLab work.',
+      'Graphics engineer CV covering real-time rendering, shader development, spatial engineering, immersive installations, and selected teamLab work.',
     imageURL:
       'https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/d53fa366-71ef-4b3c-d72a-ec3025c24600/width=3840,quality=80',
   },
@@ -166,11 +198,14 @@ const CONFIG = {
   skills: [
     'HLSL / GLSL',
     'C#',
-    'C++',
-    'RenderDoc',
-    'PIX',
+    'RenderDoc/PIX',
     'Graphics Profiling',
-    'Rhino / Grasshopper / Revit',
+    'Unity/Unreal',
+    'C++',
+    'TouchDesigner',
+    'Rhino/Grasshopper/Revit',
+    'Blender',
+    'ARKit',
     'Git',
     'Node.js',
     'Python',
