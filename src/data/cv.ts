@@ -35,6 +35,7 @@ export type CvEducation = {
   institution: string;
   degree: string;
   period: string;
+  highlights: string[];
 };
 
 export type CvFocusArea = {
@@ -136,10 +137,20 @@ const PROJECT_PROFILES: ProjectProfile[] = [
       'WebGL',
       'Frontend Development',
       'Appointment workflow',
-      'Content architecture',
     ],
     period: 'Dec 2025',
     location: 'Kaohsiung, Taiwan',
+  },
+  {
+    match: 'vj-production',
+    title: 'VJ Production',
+    description: 'Live-performance visual system for a Tokyo VJ context.',
+    role: 'Realtime graphics developer for VJ content and performance-ready visual tooling.',
+    challenge:
+      'Balancing expressive real-time visuals with stable playback and fast iteration during performance preparation.',
+    technologies: ['Realtime graphics', 'VJ systems', 'Shader workflow'],
+    period: 'Apr~ 2025',
+    location: 'Tokyo, Japan',
   },
   {
     match: 'project-hoipoi-vj',
@@ -179,7 +190,7 @@ const PROJECT_PROFILES: ProjectProfile[] = [
     match: 'megaliths-phenomena',
     title: 'Megaliths in the Roots Garden',
     description:
-      'Large-scale immersive installation for teamLab Phenomena Abu Dhabi.',
+      'Large-scale LED installation for teamLab Phenomena Abu Dhabi.',
     role: 'Sole engineer for realtime rendering, instancing, and installation-scale production constraints.',
     challenge:
       'Maintaining coherent visual presence across architectural scale, complex geometry, and production constraints.',
@@ -205,17 +216,15 @@ const PROJECT_PROFILES: ProjectProfile[] = [
   },
   {
     match: 'spatialcalligraphy',
-    title: 'Spatial Calligraphy in the Forest - One Stroke, Secondary Forest',
+    title: 'Spatial Calligraphy in the Forest - One Stroke',
     description:
-      'TouchDesigner-based realtime visual work for a forest installation where a continuous spatial calligraphy stroke layers, intersects, rotates, and fades through the environment.',
+      'A real-time installation featuring multi-layered spatial visuals that rotate, intersect, and dissolve directly into the natural environment.',
     role: 'Solo developer for realtime spatial calligraphy visuals and projection behavior.',
     challenge:
       'Reconstructing the depth, speed, and force of calligraphic ink traces as spatial motion while keeping the projected stroke readable across trees, darkness, and outdoor viewing conditions.',
     technologies: [
-      'TouchDesigner',
-      'Realtime visuals',
       'Spatial calligraphy',
-      'Projection mapping',
+      '3d realtime mapping',
       'Generative motion',
     ],
     period: 'Jul 2022',
@@ -225,18 +234,17 @@ const PROJECT_PROFILES: ProjectProfile[] = [
     match: 'luxe',
     title: 'LUXE - Ice skate show',
     description:
-      'Spatial production for the ice show LUXE at Yokohama Arena, using full-rink and screen projection to create stage environments synchronized with performers, scenes, and movement in real time.',
-    role: 'Spatial production engineer supporting realtime projected environments for a live ice-show stage.',
+      'Spatial production for the ice show, using full-rink and dynamic projection to synchronize with performers, scenes, and movement in real time.',
+    role: 'Graphics engineer supporting realtime projected environments for a live ice-show stage.',
     challenge:
       'Coordinating large-scale projection across an ice rink and screens while keeping visuals responsive to choreography, scene changes, and live performance timing.',
     technologies: [
       'Spatial production',
-      'Projection mapping',
       'Realtime visuals',
       'Interactive staging',
     ],
     period: 'May 2021',
-    location: 'Yokohama, Kanagawa, Japan',
+    location: 'Yokohama, Japan',
   },
   {
     match: 'reconnect',
@@ -356,17 +364,17 @@ const FOCUS_AREAS: CvFocusArea[] = [
   {
     title: 'Realtime Rendering',
     body: 'Shader-centered graphics work with attention to frame stability, visual clarity, and production constraints.',
-    stack: ['HLSL / GLSL', 'RenderDoc', 'PIX'],
+    stack: ['GPGPU', 'HLSL / GLSL', 'Profiling'],
   },
   {
     title: 'Distributed Visual Systems',
     body: 'Multi-PC synchronization and large-scale object management for immersive installations.',
-    stack: ['C#', 'Networking', 'System architecture'],
+    stack: ['Synchronization', 'System architecture', 'C#'],
   },
   {
     title: 'Spatial Computing',
-    body: 'Visual systems shaped around walls, floors, architecture, ARKit-tracked mobile devices, and human movement through space.',
-    stack: ['ARKit', 'Rhino', 'Projection geometry'],
+    body: 'Visual systems shaped around walls, floors, architecture, AR-tracked mobile devices, and human movement through space.',
+    stack: ['AR/VR', 'Projection geometry', 'Computational design'],
   },
 ];
 
@@ -449,7 +457,7 @@ const makeContactLinks = (config: Config): CvLink[] => {
 
   if (social.website) {
     links.push({
-      label: 'Website',
+      label: 'Portfolio',
       href: social.website.startsWith('http')
         ? social.website
         : `https://${social.website}`,
@@ -554,6 +562,9 @@ const makeEducations = (config: Config): CvEducation[] => {
     institution: cleanText(education.institution),
     degree: cleanText(education.degree),
     period: `${education.from} - ${education.to}`,
+    highlights: (education.highlights || []).map((highlight) =>
+      cleanText(highlight),
+    ),
   }));
 };
 

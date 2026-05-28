@@ -1,9 +1,10 @@
 import type { ReactElement } from 'react';
-import { AiFillGithub } from 'react-icons/ai';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 import {
   MdArticle,
   MdCode,
   MdDownload,
+  MdEmail,
   MdLocationOn,
   MdOpenInNew,
   MdPrint,
@@ -36,7 +37,11 @@ const SectionHeader = ({ eyebrow, title, body }: SectionHeaderProps) => (
       {eyebrow}
     </p>
     <h2 className="text-3xl font-semibold text-white sm:text-4xl">{title}</h2>
-    {body && <p className="mt-4 text-base leading-7 text-zinc-300">{body}</p>}
+    {body && (
+      <p className="cv-section-body mt-4 text-base leading-7 text-zinc-300">
+        {body}
+      </p>
+    )}
   </div>
 );
 
@@ -53,18 +58,27 @@ const ChipList = ({ items }: { items: string[] }) => (
   </div>
 );
 
-const ContactLink = ({ link }: { link: CvLink }) => (
-  <a
-    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-zinc-100 transition hover:border-cyan-300/60 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-    href={link.href}
-    rel="noreferrer"
-    target={link.href.startsWith('mailto:') ? undefined : '_blank'}
-  >
-    {link.label === 'GitHub' && <AiFillGithub aria-hidden="true" />}
-    {link.label}
-    {!link.href.startsWith('mailto:') && <MdOpenInNew aria-hidden="true" />}
-  </a>
-);
+const getPrintableHref = (href: string) => href.replace(/^mailto:/, '');
+
+const ContactLink = ({ link }: { link: CvLink }) => {
+  const isEmail = link.href.startsWith('mailto:');
+
+  return (
+    <a
+      className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-zinc-100 transition hover:border-cyan-300/60 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+      href={link.href}
+      rel="noreferrer"
+      target={isEmail ? undefined : '_blank'}
+    >
+      {link.label === 'GitHub' && <AiFillGithub aria-hidden="true" />}
+      {link.label === 'LinkedIn' && <AiFillLinkedin aria-hidden="true" />}
+      {link.label === 'Email' && <MdEmail aria-hidden="true" />}
+      {link.label}
+      <span className="cv-print-url">{getPrintableHref(link.href)}</span>
+      {!isEmail && <MdOpenInNew aria-hidden="true" />}
+    </a>
+  );
+};
 
 const HeroVisual = ({ projects }: { projects: CvProject[] }) => {
   const visualProjects = projects.slice(0, 4);
@@ -118,12 +132,12 @@ const HeroVisual = ({ projects }: { projects: CvProject[] }) => {
 
 const ProjectCard = ({ project }: { project: CvProject }) => (
   <a
-    className="group block overflow-hidden rounded-lg border border-white/10 bg-white/[0.035] transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[0.055] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+    className="cv-project-card group block overflow-hidden rounded-lg border border-white/10 bg-white/[0.035] transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[0.055] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
     href={project.link}
     rel="noreferrer"
     target="_blank"
   >
-    <div className="aspect-[16/10] overflow-hidden bg-zinc-950">
+    <div className="cv-project-image aspect-[16/10] overflow-hidden bg-zinc-950">
       {project.imageUrl && (
         <img
           alt={`${project.title} project`}
@@ -134,7 +148,7 @@ const ProjectCard = ({ project }: { project: CvProject }) => (
         />
       )}
     </div>
-    <div className="p-5">
+    <div className="cv-project-body p-5">
       <div className="mb-3 flex items-start justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
@@ -152,12 +166,12 @@ const ProjectCard = ({ project }: { project: CvProject }) => (
       </div>
       <p className="text-sm leading-6 text-zinc-300">{project.description}</p>
       {project.role && (
-        <p className="mt-4 text-sm leading-6 text-zinc-400">
+        <p className="cv-project-role mt-4 text-sm leading-6 text-zinc-400">
           <span className="font-semibold text-zinc-200">Role: </span>
           {project.role}
         </p>
       )}
-      <p className="mt-4 text-sm leading-6 text-zinc-400">
+      <p className="cv-project-challenge mt-4 text-sm leading-6 text-zinc-400">
         <span className="font-semibold text-zinc-200">Challenge: </span>
         {project.challenge}
       </p>
@@ -170,7 +184,7 @@ const ProjectCard = ({ project }: { project: CvProject }) => (
 
 const GithubProjectCard = ({ project }: { project: CvRepository }) => (
   <a
-    className="group flex h-full flex-col rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[0.055] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+    className="cv-github-card group flex h-full flex-col rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[0.055] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
     href={project.link}
     rel="noreferrer"
     target="_blank"
@@ -199,7 +213,7 @@ const GithubProjectCard = ({ project }: { project: CvRepository }) => (
 );
 
 const ExperienceItem = ({ experience }: { experience: CvExperience }) => (
-  <article className="rounded-lg border border-white/10 bg-white/[0.035] p-5">
+  <article className="cv-experience-item rounded-lg border border-white/10 bg-white/[0.035] p-5">
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div>
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-cyan-300">
@@ -239,7 +253,7 @@ const ExperienceItem = ({ experience }: { experience: CvExperience }) => (
 );
 
 const EducationItem = ({ education }: { education: CvEducation }) => (
-  <article className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
+  <article className="cv-education-item rounded-lg border border-white/10 bg-white/[0.03] p-5">
     <div className="mb-4 flex items-center justify-between gap-4">
       <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">
         {education.period}
@@ -248,6 +262,16 @@ const EducationItem = ({ education }: { education: CvEducation }) => (
     </div>
     <h3 className="text-xl font-semibold text-white">{education.degree}</h3>
     <p className="mt-2 text-sm text-zinc-300">{education.institution}</p>
+    {education.highlights.length > 0 && (
+      <ul className="mt-4 space-y-2 text-sm leading-6 text-zinc-300">
+        {education.highlights.map((highlight) => (
+          <li className="flex gap-3" key={highlight}>
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    )}
   </article>
 );
 
@@ -258,7 +282,7 @@ const FocusCard = ({
   focus: CvFocusArea;
   icon: ReactElement;
 }) => (
-  <article className="rounded-lg border border-white/10 bg-white/[0.035] p-5">
+  <article className="cv-focus-card rounded-lg border border-white/10 bg-white/[0.035] p-5">
     <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-white/[0.05] text-cyan-300">
       {icon}
     </div>
@@ -273,11 +297,15 @@ const FocusCard = ({
 const CvPortfolio = ({ config }: CvPortfolioProps) => {
   const data = buildCvData(config);
   const githubLink = data.contactLinks.find((link) => link.label === 'GitHub');
+  const linkedinLink = data.contactLinks.find(
+    (link) => link.label === 'LinkedIn',
+  );
+  const emailLink = data.contactLinks.find((link) => link.label === 'Email');
 
   return (
     <main className="cv-shell min-h-screen overflow-hidden bg-[#08090a] text-zinc-100">
       <a
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-zinc-950"
+        className="no-print sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-zinc-950"
         href="#content"
       >
         Skip to content
@@ -326,6 +354,26 @@ const CvPortfolio = ({ config }: CvPortfolioProps) => {
                 <AiFillGithub aria-hidden="true" />
               </a>
             )}
+            {linkedinLink && (
+              <a
+                aria-label="LinkedIn profile"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-xl text-zinc-100 transition hover:border-cyan-300/60 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                href={linkedinLink.href}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <AiFillLinkedin aria-hidden="true" />
+              </a>
+            )}
+            {emailLink && (
+              <a
+                aria-label="Email"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-xl text-zinc-100 transition hover:border-cyan-300/60 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                href={emailLink.href}
+              >
+                <MdEmail aria-hidden="true" />
+              </a>
+            )}
             <button
               className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-xl text-zinc-100 transition hover:border-amber-300/60 hover:text-amber-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
               onClick={() => window.print()}
@@ -355,7 +403,7 @@ const CvPortfolio = ({ config }: CvPortfolioProps) => {
             <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300">
               {data.headline}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="cv-hero-actions mt-8 flex flex-wrap gap-3">
               <a
                 className="inline-flex items-center gap-2 rounded-full bg-cyan-300 px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-100"
                 href="#work"
@@ -394,7 +442,7 @@ const CvPortfolio = ({ config }: CvPortfolioProps) => {
             />
             <p className="text-base leading-8 text-zinc-300">{data.summary}</p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="cv-about-stats grid gap-4 sm:grid-cols-3">
             <div className="rounded-lg border border-white/10 bg-white/[0.035] p-5">
               <p className="text-3xl font-semibold text-white">
                 {data.projects.length}
@@ -438,7 +486,7 @@ const CvPortfolio = ({ config }: CvPortfolioProps) => {
 
       {data.githubProjects.length > 0 && (
         <section
-          className="relative border-b border-white/10 px-5 py-16 sm:px-8"
+          className="cv-github-section relative border-b border-white/10 px-5 py-16 sm:px-8"
           id="github"
         >
           <div className="mx-auto max-w-7xl">
@@ -501,7 +549,7 @@ const CvPortfolio = ({ config }: CvPortfolioProps) => {
         id="writing"
       >
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
+          <div className="cv-technical-notes">
             <SectionHeader
               body="Concise technical notes for reviewers scanning the CV. These can become deeper writeups later."
               eyebrow="Technical Writeups"

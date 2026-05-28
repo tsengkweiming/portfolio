@@ -214,6 +214,10 @@ svg {
   font-weight: 600;
 }
 
+.cv-print-url {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .cv-visual-grid {
     min-height: 420px;
@@ -239,7 +243,12 @@ svg {
 
 @media print {
   @page {
-    margin: 14mm;
+    size: A4;
+    margin: 10mm;
+  }
+
+  html {
+    font-size: 11px;
   }
 
   body {
@@ -248,13 +257,21 @@ svg {
 
   .no-print,
   .cv-backdrop,
-  .cv-hero-visual {
+  .cv-hero-visual,
+  .cv-hero-actions,
+  .cv-about-stats,
+  .cv-github-section,
+  .cv-project-challenge,
+  .cv-project-role,
+  .cv-section-body,
+  .cv-technical-notes {
     display: none !important;
   }
 
   .cv-shell {
     background: #ffffff !important;
     color: #111827 !important;
+    overflow: visible !important;
   }
 
   .cv-shell *,
@@ -268,13 +285,96 @@ svg {
   .cv-shell section,
   .cv-shell header {
     border-color: #d4d4d8 !important;
-    break-inside: avoid;
-    padding: 16px 0 !important;
+    break-inside: auto;
+    padding: 10px 0 !important;
   }
 
   .cv-shell article,
   .cv-shell a {
+    break-inside: auto;
+  }
+
+  .cv-shell #content {
+    display: block !important;
+    min-height: auto !important;
+    padding-top: 0 !important;
+  }
+
+  .cv-shell .grid {
+    gap: 8px !important;
+  }
+
+  .cv-shell #work .grid,
+  .cv-shell #github .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .cv-shell #writing > .grid {
+    display: block !important;
+  }
+
+  .cv-project-image {
+    display: none !important;
+  }
+
+  .cv-project-card,
+  .cv-github-card,
+  .cv-experience-item,
+  .cv-focus-card,
+  .cv-education-item {
     break-inside: avoid;
+    page-break-inside: avoid;
+    padding: 8px !important;
+  }
+
+  .cv-project-body {
+    padding: 0 !important;
+  }
+
+  .cv-shell h1 {
+    font-size: 28pt !important;
+    line-height: 1.05 !important;
+  }
+
+  .cv-shell h2 {
+    font-size: 15pt !important;
+    line-height: 1.15 !important;
+  }
+
+  .cv-shell h3 {
+    font-size: 11pt !important;
+    line-height: 1.2 !important;
+  }
+
+  .cv-shell p,
+  .cv-shell li {
+    font-size: 8.8pt !important;
+    line-height: 1.35 !important;
+  }
+
+  .cv-shell .mb-8,
+  .cv-shell .mb-5,
+  .cv-shell .mb-4,
+  .cv-shell .mb-3,
+  .cv-shell .mt-10,
+  .cv-shell .mt-8,
+  .cv-shell .mt-6,
+  .cv-shell .mt-5,
+  .cv-shell .mt-4,
+  .cv-shell .mt-3,
+  .cv-shell .mt-2,
+  .cv-shell .mt-1 {
+    margin-bottom: 6px !important;
+    margin-top: 6px !important;
+  }
+
+  .cv-shell .rounded-full {
+    padding: 2px 6px !important;
+  }
+
+  .cv-print-url {
+    display: inline !important;
+    font-weight: 400 !important;
   }
 
   .cv-shell .rounded-lg,

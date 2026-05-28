@@ -170,7 +170,7 @@ const CONFIG = {
       'https://imagedelivery.net/b5EBo9Uo-OK6SM09ZTkEZQ/d53fa366-71ef-4b3c-d72a-ec3025c24600/width=3840,quality=80',
   },
   social: {
-    linkedin: '',
+    linkedin: 'kwei-ming-tseng',
     x: '',
     mastodon: '',
     researchGate: '',
@@ -187,9 +187,9 @@ const CONFIG = {
     stackoverflow: '', // example: '1/jeff-atwood'
     discord: '',
     telegram: '',
-    website: '',
+    website: 'https://tsengkweiming.github.io/portfolio/',
     phone: '',
-    email: '',
+    email: 'gnimiewk@gmail.com',
   },
   resume: {
     fileUrl:
@@ -241,12 +241,22 @@ const CONFIG = {
       degree: 'Master of Science in Architecture',
       from: '2016',
       to: '2018',
+      highlights: [
+        'Studied HCI through Computer Science graduate coursework and research collaboration.',
+        'Joined a university thesis research project exploring VR for architectural discussion and design review.',
+        'Proposed an ARKit-based mixed-reality thesis for a shared mobile-device audiovisual performance.',
+      ],
     },
     {
       institution: 'National Chiao Tung University',
-      degree: 'Bachelor of Transporation Technology',
+      degree: 'Bachelor of Transportation Technology',
       from: '2012',
       to: '2016',
+      highlights: [
+        'Won first prize at the MIT Media Lab Future City Workshop in 2015.',
+        'Built early coding and logistics-system foundations through transportation technology coursework.',
+        'Started self-directed UX study through Computer Science courses after developing a stronger interest in design.',
+      ],
     },
   ],
   publications: [],
