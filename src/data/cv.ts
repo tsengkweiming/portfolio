@@ -337,6 +337,22 @@ const PROJECT_PROFILES: ProjectProfile[] = [
     period: 'Oct 2018',
     location: 'Hsinchu, Taiwan',
   },
+  {
+    match: 'surface-branching',
+    title: 'Branching and Blending of Continuous Surfaces between Units',
+    description:
+      'Graduate morphogenesis and geometry research that reverse-modeled Galaxy SOHO and Raffles City Hangzhou, then developed a method for branching and blending continuous NURBS surfaces between modular units.',
+    challenge:
+      'Keeping multi-edge and T-shaped surface joins smooth across unit configurations (A+B, A+B&B, A+A+A, A+A+A+A), using BlendCrv, Sweep2, Patch, and NetworkSrf with trimmed seams re-blended and verified by zebra analysis.',
+    technologies: [
+      'Rhino',
+      'NURBS modeling',
+      'Surface continuity',
+      'Computational design',
+    ],
+    period: '2017',
+    location: 'Hsinchu, Taiwan',
+  },
 ];
 
 const GITHUB_PROJECT_PROFILES: Record<string, GithubProjectProfile> = {

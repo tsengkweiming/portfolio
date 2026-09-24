@@ -138,6 +138,12 @@ const CONFIG = {
           imageUrl: './projects/ar-vr-thesis.jpg',
           link: './docs/ar-vr-thesis.pdf',
         },
+        {
+          title: 'Branching and Blending of Continuous Surfaces between Units',
+          description: '2017, Hsinchu, Taiwan',
+          imageUrl: './projects/surface-branching.jpg',
+          link: 'https://tsengkweiming.github.io/portfolio-pages/project-surface-branching/',
+        },
       ],
     },
     github: {
