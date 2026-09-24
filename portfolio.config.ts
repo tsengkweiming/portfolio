@@ -1,7 +1,7 @@
 // portfolio.config.ts
 
 const CONFIG = {
-  bio: `Graphics engineer specializing in real-time rendering, shader development (HLSL, GLSL), and system architecture in C#. Experienced in building distributed real-time synchronization systems, signal processing pipelines, and large-scale object management. At teamLab, I develop immersive digital contents that integrate graphics, distributed systems, and spatial computing—ensuring seamless visual continuity across multiple PCs and complex geometries such as walls and floors. I also have AR and HCI research experience through a multi-user AR/VR audiovisual performance thesis using ARKit. With a background in architecture and transportation technology from National Chiao Tung University, I bring a human-centered approach to spatial system design. Previously a VR developer at NAXS Corp. Always curious, always building.`,
+  bio: `Graphics engineer with an architecture background, specializing in real-time rendering, shader development (HLSL, GLSL), and system architecture in C#. At teamLab, I develop immersive digital works that integrate graphics, distributed systems, and spatial computing, keeping visuals continuous across multiple PCs and architectural surfaces such as walls, floors, and complex geometry. I hold a Master of Science in Architecture from National Chiao Tung University, where I focused on computational design and spatial interaction. I also have AR and HCI research experience through a multi-user AR/VR audiovisual performance thesis using ARKit. Previously a VR developer at NAXS Corp. I bring a human-centered approach to spatial design, turning design intent into robust, performant digital systems.`,
   github: {
     username: 'tsengkweiming', // Your GitHub org/user name. (This is the only required config)
   },
@@ -248,9 +248,10 @@ const CONFIG = {
       from: '2016',
       to: '2018',
       highlights: [
-        'Studied HCI through Computer Science graduate coursework and research collaboration.',
-        'Joined a university thesis research project exploring VR for architectural discussion and design review.',
-        'Proposed an ARKit-based mixed-reality thesis for a shared mobile-device audiovisual performance.',
+        'Joined a university research project using VR for architectural discussion and design review.',
+        'Completed an ARKit-based multi-user AR/VR thesis on shared spatial alignment across mobile and VR devices.',
+        'Studied computational form and NURBS surface modeling in Rhino through case-study reverse-modeling of contemporary architecture.',
+        'Developed a method for branching and blending continuous surfaces between modular units, validated with zebra continuity analysis.',
       ],
     },
     {

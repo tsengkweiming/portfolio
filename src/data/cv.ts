@@ -77,7 +77,7 @@ type ExternalProject = NonNullable<ExternalProjects['projects']>[number];
 type GithubProjectProfile = Omit<CvRepository, 'repo' | 'link'>;
 
 const DEFAULT_NAME = 'Tseng KueiMing';
-const ROLE = 'Graphics Engineer / Creative Technologist';
+const ROLE = 'Graphics Engineer & Computational Design';
 const LOCATION = 'Tokyo, Japan';
 
 const EXPERIENCE_BULLETS: Record<string, string[]> = {
@@ -346,6 +346,7 @@ const PROJECT_PROFILES: ProjectProfile[] = [
       'Keeping multi-edge and T-shaped surface joins smooth across unit configurations (A+B, A+B&B, A+A+A, A+A+A+A), using BlendCrv, Sweep2, Patch, and NetworkSrf with trimmed seams re-blended and verified by zebra analysis.',
     technologies: [
       'Rhino',
+      'Grasshopper',
       'NURBS modeling',
       'Surface continuity',
       'Computational design',
@@ -592,9 +593,9 @@ export const buildCvData = (config: Config): CvData => {
     role: ROLE,
     summary:
       cleanText(config.bio) ||
-      'Graphics engineer focused on real-time rendering, shader development, and immersive spatial systems.',
+      'Computational design and graphics engineer focused on architectural geometry, real-time rendering, and spatial systems.',
     headline:
-      'Realtime rendering, shader systems, and immersive spatial engineering for large-scale digital experiences.',
+      'Computational geometry, realtime rendering, and spatial systems for architecture-scale digital experiences.',
     location: LOCATION,
     skills,
     primaryStack: skills.slice(0, 5),
