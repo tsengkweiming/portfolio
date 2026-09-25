@@ -144,6 +144,13 @@ const CONFIG = {
           imageUrl: './projects/surface-branching.jpg',
           link: 'https://tsengkweiming.github.io/portfolio-pages/project-surface-branching/',
         },
+        {
+          title: 'Digital Fabrication & Robotic Prototyping',
+          description: '2016 - 2018, Hsinchu, Taiwan',
+          imageUrl:
+            'https://tsengkweiming.github.io/portfolio-pages/project-digital-fabrication/photos/img02.jpg',
+          link: 'https://tsengkweiming.github.io/portfolio-pages/project-digital-fabrication/',
+        },
       ],
     },
     github: {

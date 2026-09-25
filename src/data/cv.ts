@@ -354,6 +354,22 @@ const PROJECT_PROFILES: ProjectProfile[] = [
     period: '2017',
     location: 'Hsinchu, Taiwan',
   },
+  {
+    match: 'project-digital-fabrication',
+    title: 'Digital Fabrication & Robotic Prototyping',
+    description:
+      'Graduate digital fabrication work using KUKA and ABB robot arms for concrete, clay, and FDM printing, alongside thermoformed architectural skins, dynamic projection, and VIVE motion capture.',
+    challenge:
+      'Turning Grasshopper geometry into reliable robot toolpaths and custom end effectors, including concrete, clay, and FDM extruders and a steel-bending gripper, while linking physical fabrication with projection and tracked motion.',
+    technologies: [
+      'Robotic fabrication',
+      'Grasshopper',
+      'Additive manufacturing',
+      'Dynamic projection mapping',
+    ],
+    period: '2016 - 2018',
+    location: 'Hsinchu, Taiwan',
+  },
 ];
 
 const GITHUB_PROJECT_PROFILES: Record<string, GithubProjectProfile> = {
